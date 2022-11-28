@@ -5,6 +5,7 @@ app = Flask(__name__)
 
 @app.route("/")
 def main_page():
+    """Главная вьюха"""
     candidates = load_candidates()
     result = '<pre>'
     for candidate in candidates:
@@ -18,6 +19,7 @@ def main_page():
 
 @app.route("/candidates/<int:uid>")
 def page_candidate(uid):
+    """Вьюха '/candidates/'"""
     candidate = get_by_pk(uid)
     result = f'<img src="{candidate["picture"]}">'
     result += '<pre>'
@@ -30,6 +32,7 @@ def page_candidate(uid):
 
 @app.route("/skills/<skill>")
 def page_skills(skill):
+    """Вьюха '/skill/'"""
     result = '<pre>'
     valid_candidates = get_by_skill(skill)
     for valid_candidate in valid_candidates:
